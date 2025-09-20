@@ -66,19 +66,7 @@ export const Navbar: React.FC<HeaderProps> = ({ className }) => {
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-600/5 via-purple-600/5 to-cyan-600/5 group-hover:from-blue-600/10 group-hover:via-purple-600/10 group-hover:to-cyan-600/10 transition-all duration-300"></div>
               </button>
             ) : (
-             <UserButton
-        appearance={{
-          elements: {
-            userButtonAvatarBox: "bg-black", // Makes avatar background black
-            userButtonPopoverCard: "bg-black text-white", // Makes dropdown black
-            userButtonPopoverActionButton: "hover:bg-gray-800", // Hover style
-          },
-          variables: {
-            colorPrimary: "#000000", // Primary black
-            colorText: "#FFFFFF",   // White text on black
-          }
-        }}
-      />
+             <UserButton />
             )}
 
 
@@ -119,19 +107,7 @@ export const Navbar: React.FC<HeaderProps> = ({ className }) => {
                 </button>
               ) : (
                 <div className="flex justify-center">
-                  <UserButton
-        appearance={{
-          elements: {
-            userButtonAvatarBox: "bg-black", // Makes avatar background black
-            userButtonPopoverCard: "bg-black text-white", // Makes dropdown black
-            userButtonPopoverActionButton: "hover:bg-gray-800", // Hover style
-          },
-          variables: {
-            colorPrimary: "#000000", // Primary black
-            colorText: "#FFFFFF",   // White text on black
-          }
-        }}
-      />
+                  <UserButton />
                 </div>
               )}
             </div>

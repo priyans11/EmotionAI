@@ -6,14 +6,14 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import About from "./section/About";
 import { Navbar } from "./components/Navbar";
 import AboutTab from './NAVTAB/AboutTab';
-import ServicesTab from './NAVTAB/ServicesTab';
+// import ServicesTab from './NAVTAB/ServicesTab';
 import Contact from './NAVTAB/Contact';
 import Doc from './NAVTAB/Doc';
 // import Emotion from './NAVTAB/Models/Emotion';
 import Models from './section/Models';
-import FrameX from './NAVTAB/Models/FrameX';
+// import FrameX from './NAVTAB/Models/FrameX';
 import { RedirectToSignIn, SignedIn, SignedOut } from '@clerk/clerk-react';
-import Ollama from './NAVTAB/Models/Ollama';
+// import Ollama from './NAVTAB/Models/Ollama';
 import { GoogleGeminiEffectDemo } from '@/components/google-gemini-demo';
 import EmotionDetection from './NAVTAB/Models/Emotion-detection/Emotion_detection';
 import TextEmotion from './NAVTAB/Models/Emotion-detection/Models/Text_emo';
@@ -42,7 +42,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutTab />} />
-        <Route path="/services" element={
+        {/* <Route path="/services" element={
         <>
         <SignedIn>
           <ServicesTab />
@@ -53,8 +53,8 @@ const App = () => {
          </SignedOut>
         </>
 
-          } />
-        <Route path="/services/frame-x" element={
+          } /> */}
+        {/* <Route path="/services/frame-x" element={
           <>
           <SignedIn>
           <FrameX />
@@ -64,9 +64,9 @@ const App = () => {
           <RedirectToSignIn/>
          </SignedOut>
          </>
-        } />
+        } /> */}
 
-        <Route path="/services/vedya" element={
+        {/* <Route path="/services/vedya" element={
           <>
           <SignedIn>
           <Ollama/>
@@ -76,9 +76,9 @@ const App = () => {
           <RedirectToSignIn/>
          </SignedOut>
          </>
-        } />
+        } /> */}
 
-        <Route path="/services/emotion-detection" element={
+        <Route path="/services" element={
           <>
           <SignedIn>
           <EmotionDetection/>

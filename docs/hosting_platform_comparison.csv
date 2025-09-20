@@ -1,0 +1,8 @@
+Platform,Monthly_Cost,Build_Minutes,Bandwidth_GB,Storage_GB,Database_Support,Docker_Support,FastAPI_Compatible,Custom_Domains,Auto_Scaling,Uptime_SLA,Best_For
+Render,$0,500,100,1,External,Yes,Yes,Yes,Yes,99.9%,Full-stack APIs
+Vercel,$0,100,100,0.5,External,Limited,Yes,Yes,Yes,99.9%,Frontend + API
+Heroku,$0*,1000,1000,1,PostgreSQL,Yes,Yes,Yes*,Yes,99.9%,Prototyping
+Railway,$0*,500,100,1,PostgreSQL,Yes,Yes,Yes*,Yes,99.9%,Modern apps
+Fly.io,$0*,Unlimited,160,3,PostgreSQL,Yes,Yes,Yes,Yes,99.9%,Global deployment
+PythonAnywhere,$0,N/A,3,0.5,MySQL,No,Yes,Subdomain,No,99%,Python focus
+Oracle Cloud,$0,N/A,10000,200,PostgreSQL,Yes,Yes,Yes,Yes,99.95%,Enterprise grade

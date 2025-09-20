@@ -1,0 +1,18 @@
+Layer,Component,Technology,Purpose
+Presentation,Swagger UI,OpenAPI/Swagger,Interactive API testing
+Presentation,API Documentation,Markdown/HTML,User documentation
+Presentation,Client Applications,Web/Mobile Apps,API consumption
+API Gateway,Authentication,JWT/OAuth2,Secure access control
+API Gateway,Rate Limiting,FastAPI Middleware,Prevent abuse
+API Gateway,Request Routing,FastAPI Router,Load distribution
+Microservices,Project 1 API,FastAPI + Python,DIC Project 1 services
+Microservices,Project 2 API,FastAPI + Python,DIC Project 2 services
+Microservices,Project 3 API,FastAPI + Python,DIC Project 3 services
+Microservices,Health Monitoring,Health Endpoints,System health checks
+Data Layer,PostgreSQL Database,PostgreSQL 14+,Primary data storage
+Data Layer,Redis Cache,Redis (if needed),Performance optimization
+Data Layer,File Storage,Local/Cloud Storage,Static assets
+Infrastructure,Docker Containers,Docker Compose,Consistent deployment
+Infrastructure,GitHub Actions CI/CD,GitHub Actions,Automated deployments
+Infrastructure,Monitoring,Prometheus/Grafana,System observability
+Infrastructure,Free-Tier Hosting,Render/Vercel/Railway,Cost-effective hosting

@@ -1,0 +1,14 @@
+Risk_Category,Risk_Description,Probability,Impact,Risk_Level,Mitigation_Strategy,Contingency_Plan
+Technical,API integration complexity exceeds estimates,Medium,High,High,"Start with simpler APIs, iterative development approach","Reduce scope to 2 projects, focus on quality over quantity"
+Technical,Free-tier hosting limitations affect performance,Low,Medium,Low,"Use multiple hosting options, local development backup","Deploy on multiple platforms, document limitations"
+Technical,Database design inadequate for multiple projects,Medium,High,High,"Extensive database planning phase, expert consultation","Simplify data models, use existing schemas where possible"
+Technical,Security vulnerabilities in API implementation,Medium,High,High,"Security-first development, regular security audits","Implement basic security, document known limitations"
+Resource,Team member unavailability due to academic commitments,High,High,High,"Create detailed task allocation, buffer time planning","Redistribute tasks, extend timeline if approved"
+Resource,Insufficient time for testing and documentation,Medium,Medium,Medium,"Prioritize core features, parallel development/testing","Focus on MVP, document future enhancements"
+Resource,Hardware/software resource constraints,Low,Medium,Low,"Use free-tier resources, university lab access","Partner with other teams, request university resources"
+External,DIC project selection changes mid-development,Low,High,Medium,Establish clear project selection criteria early,Have backup project options ready
+External,Free hosting platform service disruptions,Low,Medium,Low,"Multiple deployment targets, local fallback options",Maintain local development environment as backup
+External,Third-party dependency failures,Medium,Medium,Medium,"Minimize external dependencies, create abstractions",Build custom solutions or find alternatives
+Academic,Project scope creep affecting timeline,Medium,High,High,"Strict scope definition, change control process","Lock scope after Week 1, formal change approval process"
+Academic,Academic evaluation criteria changes,Low,High,Medium,"Regular supervisor consultation, criteria clarification",Align with supervisor expectations from start
+Academic,Insufficient novelty for academic standards,Low,High,Medium,"Literature review, unique value proposition focus",Emphasize practical impact and industry relevance

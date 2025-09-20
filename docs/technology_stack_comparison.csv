@@ -1,0 +1,16 @@
+Category,Technology,Free_Tier,Learning_Curve,Performance,Industry_Standard,Academic_Relevance,Selected,Justification
+Backend Framework,FastAPI,Yes,Low,Excellent,High,High,✓,"Automatic OpenAPI generation, high performance, modern async support"
+Backend Framework,Flask,Yes,Low,Good,High,Medium,,Simpler but lacks automatic documentation
+Backend Framework,Django,Yes,High,Good,High,High,,Too heavy for API-focused project
+Containerization,Docker,Yes,Medium,Excellent,Very High,Very High,✓,"Industry standard, consistent deployment, easy scaling"
+Containerization,Podman,Yes,Medium,Excellent,Medium,Medium,,Less ecosystem support
+Containerization,Native Deployment,Yes,Low,Excellent,Low,Low,,"Environment inconsistencies, deployment complexity"
+Database,PostgreSQL,Yes,Medium,Excellent,Very High,High,✓,"Full-featured, excellent performance, free hosting support"
+Database,MySQL,Yes,Low,Good,High,Medium,,Adequate but less features
+Database,SQLite,Yes,Low,Limited,Low,Low,,Not suitable for production APIs
+Documentation,Swagger/OpenAPI,Yes,Low,N/A,Very High,High,✓,"Industry standard, automatic generation, interactive testing"
+Documentation,Postman,Limited,Low,N/A,High,Medium,,"Manual process, limited automation"
+Documentation,Custom Documentation,Yes,High,N/A,Low,Low,,"Time-intensive, maintenance overhead"
+CI/CD,GitHub Actions,Yes,Low,Good,High,High,✓,"Free for public repos, excellent GitHub integration"
+CI/CD,GitLab CI,Limited,Medium,Good,Medium,Medium,,Limited free tier
+CI/CD,Jenkins,Limited,High,Excellent,Very High,Medium,,"Complex setup, overkill for project size"

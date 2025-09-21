@@ -222,7 +222,7 @@ const EmotionDetection: React.FC = () => {
               {/* Multimodal LLM-based Emotion Detection */}
               <EmotionModelCard
                 title="Multimodal LLM Emotion AI"
-                description="Advanced large language model enhanced with multimodal capabilities for emotion detection. Combines text, audio, and visual inputs to provide comprehensive emotional analysis. Features conversational AI capabilities for interactive emotion coaching and autism support applications."
+                description="Advanced large language model enhanced with multimodal capabilities for emotion detection. Combines text, audio, and visual inputs to provide comprehensive emotional analysis. Features conversational AI capabilities for interactive emotion coaching and therapeutic applications."
                 imageSrc="/emotion-detection.png"
                 tags={['Large Language Model', 'Multimodal AI', 'Conversational AI', 'Comprehensive Analysis']}
                 metrics={{

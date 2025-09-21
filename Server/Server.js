@@ -6,6 +6,7 @@ const app = express();
 const emotionRouter = require('./Router/emotion-router.js');
 const ollamaRouter = require('./Router/Ollama.js');
 const emoAudioRouter = require('./Router/Emo_audio.js');
+const emoVideoRouter = require('./Router/Emo_video.js');
 
 const corsOptions = {
   origin: [
@@ -28,6 +29,7 @@ app.use(express.json());
 app.use('/api/emotion', emotionRouter);
 app.use('/api/ollama', ollamaRouter);
 app.use('/api/emo-audio', emoAudioRouter);
+app.use('/api/emo-video', emoVideoRouter);
 
 
 
@@ -51,6 +53,8 @@ const PORT = process.env.PORT || 5000;
 // Start server directly since no database connection is needed for ASR/emotion processing
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
-    console.log('ASR, Emotion, and Ollama routes mounted successfully');
+    console.log('ASR, Emotion, Audio, Video, and Ollama routes mounted successfully');
     console.log('Ollama endpoint: /api/ollama/chat');
+    console.log('Audio Emotion endpoint: /api/emo-audio/analyze');
+    console.log('Video Emotion endpoint: /api/emo-video/analyze');
 });

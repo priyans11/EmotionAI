@@ -118,12 +118,12 @@ const Services: React.FC = () => {
               </h1>
               <div className="max-w-3xl mx-auto mb-10">
                 <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-light mb-6">
-                  Advanced artificial intelligence solutions for autism support and detection, 
+                  Advanced artificial intelligence solutions for emotion detection and analysis, 
                   powered by cutting-edge machine learning and computer vision technology.
                 </p>
                 <p className="text-base text-gray-400 max-w-2xl mx-auto">
                   Our models are trained on diverse datasets and continuously improved to provide 
-                  accurate, real-time assistance for individuals with autism spectrum disorders.
+                  accurate, real-time assistance for individuals in professional and therapeutic contexts.
                 </p>
               </div>
               <div className="flex flex-wrap justify-center gap-6 mb-10">
@@ -186,9 +186,9 @@ const Services: React.FC = () => {
               />
               <FeaturedModelCard
                 title="Emotion Detection Model"
-                description="Our advanced emotion detection AI model uses computer vision and machine learning to accurately identify and analyze facial expressions and emotional states. This model is specifically designed to support individuals with autism by providing real-time emotional feedback and assistance in social interactions."
+                description="Our advanced emotion detection AI model uses computer vision and machine learning to accurately identify and analyze facial expressions and emotional states. This model is specifically designed to support professionals by providing real-time emotional feedback and assistance in therapeutic interactions."
                 imageSrc="/emotion-detection.png"
-                tags={['Computer Vision', 'Machine Learning', 'Autism Support', 'Real-time']}
+                tags={['Computer Vision', 'Machine Learning', 'Therapeutic Support', 'Real-time']}
                 metrics={{
                   accuracy: '--%',
                   latency: '--ms',
@@ -200,9 +200,9 @@ const Services: React.FC = () => {
 
               <FeaturedModelCard
                 title="Vedya AI Assistant"
-                description="Meet Vedya, our intelligent conversational AI assistant powered by advanced language models. Designed to understand and respond to text, images, audio, and video inputs, Vedya provides personalized support and assistance. Perfect for autism support with empathetic responses, multimodal communication, and real-time interaction capabilities."
+                description="Meet Vedya, our intelligent conversational AI assistant powered by advanced language models. Designed to understand and respond to text, images, audio, and video inputs, Vedya provides personalized support and assistance. Perfect for therapeutic applications with empathetic responses, multimodal communication, and real-time interaction capabilities."
                 imageSrc="/vedya.png"
-                tags={['Conversational AI', 'Multimodal Input', 'Autism Support', 'Real-time Chat', 'Language Model']}
+                tags={['Conversational AI', 'Multimodal Input', 'Therapeutic Support', 'Real-time Chat', 'Language Model']}
                 metrics={{
                   accuracy: '--%',
                   latency: '-- ms',
@@ -219,7 +219,7 @@ const Services: React.FC = () => {
             {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
                <SimpleModelCard
                 title="Speech Analysis"
-                description="AI-powered speech pattern analysis for autism support"
+                description="AI-powered speech pattern analysis for therapeutic support"
                 accuracy="92.1%"
                 status="Active"
                 icon={<SpeechIcon />}

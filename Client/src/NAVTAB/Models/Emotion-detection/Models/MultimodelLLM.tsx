@@ -23,7 +23,7 @@ const MultimodalLLM: React.FC = () => {
             </h1>
             <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-light max-w-3xl mx-auto">
               Advanced large language model enhanced with multimodal capabilities for comprehensive emotion detection. 
-              Combines text, audio, and visual inputs with conversational AI for autism support applications.
+              Combines text, audio, and visual inputs with conversational AI for therapeutic applications.
             </p>
           </div>
         </div>
@@ -116,7 +116,7 @@ const MultimodalLLM: React.FC = () => {
           <FeatureCard
             icon="🧠"
             title="Advanced LLM"
-            description="Large language model with specialized emotion understanding and autism support."
+            description="Large language model with specialized emotion understanding and therapeutic support."
           />
           <FeatureCard
             icon="🎯"

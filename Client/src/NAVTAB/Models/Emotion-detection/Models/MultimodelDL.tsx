@@ -23,7 +23,7 @@ const MultimodalDL: React.FC = () => {
             </h1>
             <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-light max-w-3xl mx-auto">
               Cutting-edge deep learning architecture that fuses multiple input modalities for superior emotion detection. 
-              Features ensemble learning and attention mechanisms optimized for autism spectrum disorder support.
+              Features ensemble learning and attention mechanisms optimized for therapeutic applications.
             </p>
           </div>
         </div>

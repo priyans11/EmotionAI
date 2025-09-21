@@ -23,7 +23,7 @@ const TextEmotion: React.FC = () => {
             </h1>
             <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-light max-w-3xl mx-auto">
               Advanced natural language processing for analyzing emotional content in text. 
-              Perfect for social media monitoring, chat applications, and autism support communication.
+              Perfect for social media monitoring, chat applications, and communication support systems.
             </p>
           </div>
         </div>
@@ -79,7 +79,7 @@ const TextEmotion: React.FC = () => {
           <FeatureCard
             icon="🎯"
             title="High Accuracy"
-            description="94.2% accuracy rate trained on diverse datasets including autism support contexts."
+            description="94.2% accuracy rate trained on diverse datasets including professional therapeutic contexts."
           />
           <FeatureCard
             icon="🔄"

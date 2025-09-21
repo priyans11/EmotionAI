@@ -31,8 +31,8 @@ Before running the project, ensure you have the following installed:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/TheAutisticAPI/TheAutisticAPI.git
-cd TheAutisticAPI
+git clone https://github.com/EmotionAI/EmotionAI.git
+cd EmotionAI
 ```
 
 ### 2. Install Dependencies

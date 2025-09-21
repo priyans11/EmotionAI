@@ -354,9 +354,9 @@ const AudioEmotionDetection: React.FC = () => {
                           </div>
                         );
                       })}
-                      <div className="text-xs text-gray-400 mt-2">
+                      {/* <div className="text-xs text-gray-400 mt-2">
                         Source: {source === 'model' ? 'AI Model (localhost:8000)' : 'Mock'}
-                      </div>
+                      </div> */}
                     </div>
                   )}
                 </div>

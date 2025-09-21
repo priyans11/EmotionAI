@@ -43,8 +43,8 @@ node test-asr.js  # Basic endpoint test
 - Push changes to your backend hosting (Render)
 - Restart the service to load new router and env vars
 - Verify endpoints: 
-  - https://theautisticapi-bd5h.onrender.com/api/asr/ping
-  - https://theautisticapi-bd5h.onrender.com/api/asr/transcribe
+  - https://emotionai-api.onrender.com/api/asr/ping
+  - https://emotionai-api.onrender.com/api/asr/transcribe
 
 ### 3. Test Full Flow
 - Go to your frontend: `/services/asr`

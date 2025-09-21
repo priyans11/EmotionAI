@@ -116,7 +116,7 @@ const EmotionDetection: React.FC = () => {
               <div className="max-w-3xl mx-auto mb-10">
                 <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-light mb-6">
                   Comprehensive emotion detection solutions powered by cutting-edge AI technology. 
-                  Our suite includes text, audio, video, and multimodal models designed for autism support and emotional intelligence.
+                  Our suite includes text, audio, video, and multimodal models designed for emotional intelligence.
                 </p>
                 <p className="text-base text-gray-400 max-w-2xl mx-auto">
                   Choose from our specialized models tailored to different input types and use cases, 
@@ -180,7 +180,7 @@ const EmotionDetection: React.FC = () => {
               {/* Text-based Emotion Detection */}
               <EmotionModelCard
                 title="Text Emotion Analysis"
-                description="Advanced natural language processing model that analyzes text content to detect emotional states. Perfect for social media monitoring, chat applications, and written communication analysis. Uses transformer-based architecture with fine-tuning for autism support contexts."
+                description="Advanced natural language processing model that analyzes text content to detect emotional states. Perfect for social media monitoring, chat applications, and written communication analysis. Uses transformer-based architecture with fine-tuning for professional contexts."
                 imageSrc="/emotion-detection.png"
                 tags={['NLP', 'Text Analysis', 'Sentiment Analysis', 'Real-time Processing']}
                 metrics={{
@@ -194,9 +194,9 @@ const EmotionDetection: React.FC = () => {
               {/* Audio-based Emotion Detection */}
               <EmotionModelCard
                 title="Audio Emotion Recognition"
-                description="State-of-the-art speech emotion recognition system that analyzes vocal patterns, tone, and acoustic features to identify emotional states. Specialized for individuals with autism to better understand emotional cues in verbal communication and social interactions."
+                description="State-of-the-art speech emotion recognition system that analyzes vocal patterns, tone, and acoustic features to identify emotional states. Specialized to better understand emotional cues in verbal communication and social interactions."
                 imageSrc="/emotion-detection.png"
-                tags={['Speech Processing', 'Audio Analysis', 'Voice Recognition', 'Autism Support']}
+                tags={['Speech Processing', 'Audio Analysis', 'Voice Recognition', 'Professional Support']}
                 metrics={{
                   accuracy: '91.8%',
                   latency: '120ms',
@@ -208,7 +208,7 @@ const EmotionDetection: React.FC = () => {
               {/* Video-based Emotion Detection */}
               <EmotionModelCard
                 title="Video Emotion Detection"
-                description="Computer vision-powered emotion recognition that analyzes facial expressions, micro-expressions, and body language from video streams. Real-time processing capabilities make it ideal for therapy sessions, social skill training, and interactive applications for autism support."
+                description="Computer vision-powered emotion recognition that analyzes facial expressions, micro-expressions, and body language from video streams. Real-time processing capabilities make it ideal for therapy sessions, social skill training, and interactive applications."
                 imageSrc="/emotion-detection.png"
                 tags={['Computer Vision', 'Facial Recognition', 'Real-time Video', 'Behavioral Analysis']}
                 metrics={{
@@ -236,7 +236,7 @@ const EmotionDetection: React.FC = () => {
               {/* Multimodal Deep Learning */}
               <EmotionModelCard
                 title="Multimodal Deep Learning"
-                description="Cutting-edge deep learning architecture that fuses multiple input modalities (text, audio, video) for superior emotion detection accuracy. Features ensemble learning and attention mechanisms optimized for complex emotional states and autism spectrum disorder support."
+                description="Advanced fusion of text, audio, and visual modalities for comprehensive emotion understanding. Combines transformer architectures with convolutional networks to provide holistic emotional intelligence for therapeutic and educational contexts."
                 imageSrc="/emotion-detection.png"
                 tags={['Deep Learning', 'Multimodal Fusion', 'Ensemble Learning', 'Attention Mechanism']}
                 metrics={{

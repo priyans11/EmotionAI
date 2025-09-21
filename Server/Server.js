@@ -5,11 +5,12 @@ const app = express();
 
 const emotionRouter = require('./Router/emotion-router.js');
 const ollamaRouter = require('./Router/Ollama.js');
+const emoAudioRouter = require('./Router/Emo_audio.js');
 
 const corsOptions = {
   origin: [
     'http://localhost:5173', // Your local frontend
-    'https://theautisticapi.vercel.app',
+    'https://emotionai.vercel.app',
     'https://puapi.vercel.app' // Your deployed frontend URL
   ],
   methods: 'GET,POST,PUT,DELETE,PATCH,HEAD',
@@ -26,6 +27,7 @@ app.use(express.json());
 // app.use("/api/auth", authRouter); // authRouter not present in this project root - comment out to avoid crash
 app.use('/api/emotion', emotionRouter);
 app.use('/api/ollama', ollamaRouter);
+app.use('/api/emo-audio', emoAudioRouter);
 
 
 

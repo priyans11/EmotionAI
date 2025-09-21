@@ -6,7 +6,7 @@ import os
 import requests
 
 MODEL_PATH = "models/wav2vec_EmoDB_30.pth"
-MODEL_URL = "https://github.com/Raghav-56/TheAutisticAPI/releases/download/v1.0/wav2vec_EmoDB_30.pth"
+MODEL_URL = "https://github.com/Raghav-56/EmotionAI/releases/download/v1.0/wav2vec_EmoDB_30.pth"
 BASE_CKPT = "facebook/wav2vec2-base-960h"
 
 if not os.path.exists(MODEL_PATH):

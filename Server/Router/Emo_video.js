@@ -1,3 +1,4 @@
+
 const express = require('express');
 const multer = require('multer');
 const axios = require('axios');
@@ -81,15 +82,13 @@ const upload = multer({
 });
 
 async function callModelServer(filePath, fileName) {
-  // Configure when real video emotion detection API is ready. Defaults intended to fail and trigger mock.
-  const baseURL = process.env.VIDEO_EMO_MODEL_BASE_URL || 'http://localhost:5000';
-  const predictPath = process.env.VIDEO_EMO_MODEL_PREDICT_PATH || '/predict-video';
+  // Use the FastAPI inference server running on port 8000
+  const baseURL = process.env.VIDEO_EMO_MODEL_BASE_URL || 'http://localhost:8000';
+  const predictPath = process.env.VIDEO_EMO_MODEL_PREDICT_PATH || '/upload-video';
   const url = `${baseURL}${predictPath}`;
 
   const form = new FormData();
-  form.append('video_file', fssync.createReadStream(filePath), { filename: fileName });
-  // Also try common field name "video" in case API expects that
-  form.append('video', fssync.createReadStream(filePath), { filename: fileName });
+  form.append('file', fssync.createReadStream(filePath), { filename: fileName });
 
   const resp = await axios.post(url, form, {
     headers: form.getHeaders(),
@@ -177,9 +176,9 @@ router.post('/analyze', upload.single('video'), async (req, res) => {
 });
 
 router.get('/health', async (req, res) => {
-  const baseURL = process.env.VIDEO_EMO_MODEL_BASE_URL || 'http://localhost:5000';
+  const baseURL = process.env.VIDEO_EMO_MODEL_BASE_URL || 'http://localhost:8000';
   try {
-    await axios.get(`${baseURL}/health`, { timeout: 3000 });
+    await axios.get(`${baseURL}/`, { timeout: 3000 });
     res.json({ status: 'healthy', model: 'connected' });
   } catch {
     res.status(200).json({ status: 'degraded', model: 'disconnected' });

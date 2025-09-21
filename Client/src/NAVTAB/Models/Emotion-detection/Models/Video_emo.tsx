@@ -5,8 +5,8 @@ type Scores = Record<string, number>;
 const EMOTIONS = ['happy', 'sad', 'disgust', 'fear', 'anger', 'neutral'] as const;
 type Emotion = typeof EMOTIONS[number];
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
-const API_ANALYZE_URL = `${API_BASE}/api/emo-video/analyze`;
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+const API_ANALYZE_URL = `${API_BASE}/upload-video`;
 
 const VideoEmotion: React.FC = () => {
   const [isRecording, setIsRecording] = useState(false);
@@ -60,26 +60,46 @@ const VideoEmotion: React.FC = () => {
       if (!res.ok) throw new Error(`API error ${res.status}`);
       const data = await res.json();
       
-      // Handle backend response structure
-      if (data.success && data.emotion) {
-        const primary = data.emotion;
-        const scores = data.scores;
+      // Handle FastAPI response structure
+      if (data.status === 'success' && data.analysis) {
+        const analysis = data.analysis;
         
-        if (scores && typeof scores === 'object') {
-          // Normalize scores to our format
-          const normalizedScores: Scores = {};
-          for (const e of EMOTIONS) {
-            normalizedScores[e] = scores[e] || 0;
-          }
+        // Check if we have emotion data in the analysis
+        if (analysis.emotion || analysis.dominant_emotion) {
+          const primary = analysis.emotion || analysis.dominant_emotion;
+          const scores = analysis.scores || analysis.emotion_scores;
           
-          setDominant(primary as Emotion);
-          setScores(normalizedScores);
-          setSource(data.source || 'model');
-          setStatusMessage(`Analysis complete! Detected: ${primary}`);
+          if (scores && typeof scores === 'object') {
+            // Normalize scores to our format
+            const normalizedScores: Scores = {};
+            for (const e of EMOTIONS) {
+              normalizedScores[e] = Math.round((scores[e] || 0) * 100);
+            }
+            
+            // Ensure scores sum to 100
+            const total = EMOTIONS.reduce((a, e) => a + normalizedScores[e], 0);
+            if (total > 0) {
+              for (const e of EMOTIONS) {
+                normalizedScores[e] = Math.round((normalizedScores[e] / total) * 100);
+              }
+              const fix = 100 - EMOTIONS.reduce((a, e) => a + normalizedScores[e], 0);
+              normalizedScores[EMOTIONS[0]] += fix;
+            }
+            
+            setDominant(primary as Emotion);
+            setScores(normalizedScores);
+            setSource('model');
+            setStatusMessage(`Analysis complete! Detected: ${primary}`);
+          } else {
+            // Only emotion label, create mock distribution
+            setStatusMessage('Generating emotion distribution...');
+            makeClientMock(primary as Emotion);
+            return;
+          }
         } else {
-          // Only emotion label, create mock distribution
+          // No emotion data in response, use mock
           setStatusMessage('Generating emotion distribution...');
-          makeClientMock(primary as Emotion);
+          makeClientMock();
           return;
         }
       } else {
@@ -108,6 +128,11 @@ const VideoEmotion: React.FC = () => {
     const file = e.target.files?.[0];
     if (!file) return;
     
+    // Stop camera if active
+    if (isCameraActive) {
+      stopCamera();
+    }
+    
     // Clean up previous video URL
     if (videoUrl) {
       URL.revokeObjectURL(videoUrl);
@@ -122,7 +147,7 @@ const VideoEmotion: React.FC = () => {
     setVideoUrl(url);
     
     const form = new FormData();
-    form.append('video', file, file.name);
+    form.append('file', file, file.name);
     await sendFormData(form);
     setIsUploading(false);
     if (fileInputRef.current) fileInputRef.current.value = '';
@@ -132,6 +157,16 @@ const VideoEmotion: React.FC = () => {
     try {
       setError(null);
       setStatusMessage('Requesting camera access...');
+      
+      // Clear previous video/recording
+      if (videoUrl) {
+        URL.revokeObjectURL(videoUrl);
+        setVideoUrl(null);
+      }
+      setUploadedFile(null);
+      setScores(null);
+      setDominant(null);
+      
       const stream = await navigator.mediaDevices.getUserMedia({ 
         video: { width: 640, height: 480 }, 
         audio: false 
@@ -170,19 +205,21 @@ const VideoEmotion: React.FC = () => {
         setStatusMessage('Processing recording...');
         setUploadedFile('Live Recording');
         
-        // Clean up previous video URL
-        if (videoUrl) {
-          URL.revokeObjectURL(videoUrl);
-        }
-        
         const blob = new Blob(chunksRef.current, { type: 'video/webm' });
         
-        // Create video URL for playback
+        // Create video URL for playback AFTER recording stops
         const url = URL.createObjectURL(blob);
         setVideoUrl(url);
         
+        // Stop the camera stream after recording
+        if (streamRef.current) {
+          streamRef.current.getTracks().forEach(track => track.stop());
+          streamRef.current = null;
+        }
+        setIsCameraActive(false);
+        
         const form = new FormData();
-        form.append('video', blob, `recording_${Date.now()}.webm`);
+        form.append('file', blob, `recording_${Date.now()}.webm`);
         await sendFormData(form);
       };
       
@@ -257,14 +294,23 @@ const VideoEmotion: React.FC = () => {
               <div className="space-y-6">
                 {/* Video Display Area */}
                 <div className="text-center">
-                  <div className="w-full h-64 mx-auto mb-4 bg-gradient-to-br from-gray-900/30 to-gray-800/30 rounded-xl flex items-center justify-center border border-white/10 overflow-hidden">
+                  <div className="w-full h-64 mx-auto mb-4 bg-gradient-to-br from-gray-900/30 to-gray-800/30 rounded-xl flex items-center justify-center border border-white/10 overflow-hidden relative">
                     {isCameraActive ? (
-                      <video
-                        ref={videoElementRef}
-                        autoPlay
-                        muted
-                        className="w-full h-full object-cover rounded-xl"
-                      />
+                      <>
+                        <video
+                          ref={videoElementRef}
+                          autoPlay
+                          muted
+                          playsInline
+                          className="w-full h-full object-cover rounded-xl"
+                        />
+                        {isRecording && (
+                          <div className="absolute top-4 right-4 flex items-center gap-2 px-3 py-1 bg-red-600 text-white text-sm font-medium rounded-full">
+                            <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                            REC
+                          </div>
+                        )}
+                      </>
                     ) : videoUrl ? (
                       <video
                         controls
@@ -415,10 +461,10 @@ const VideoEmotion: React.FC = () => {
                         <h4 className="text-sm font-medium text-gray-400 mb-2">Detected Emotions:</h4>
                         <div className="text-gray-500">Upload video to see results...</div>
                       </div>
-                      <div>
+                      {/* <div>
                         <h4 className="text-sm font-medium text-gray-400 mb-2">Confidence Scores:</h4>
                         <div className="text-gray-500">Analysis pending...</div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 )}
@@ -428,7 +474,7 @@ const VideoEmotion: React.FC = () => {
         </div>
 
         {/* Features */}
-        <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {/* <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <FeatureCard
             icon="👁️"
             title="Facial Expression Analysis"
@@ -444,7 +490,7 @@ const VideoEmotion: React.FC = () => {
             title="Real-time Processing"
             description="85ms latency for live video streams and instant emotion feedback."
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );

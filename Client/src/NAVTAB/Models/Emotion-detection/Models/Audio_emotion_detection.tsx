@@ -15,7 +15,7 @@ const AudioEmotionDetection: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [dominant, setDominant] = useState<Emotion | null>(null);
   const [scores, setScores] = useState<Scores | null>(null);
-  const [source, setSource] = useState<'model' | 'mock' | null>(null);
+  // const [source, setSource] = useState<'model' | 'mock' | null>(null);
   const [statusMessage, setStatusMessage] = useState<string>('');
   const [uploadedFile, setUploadedFile] = useState<string | null>(null);
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
@@ -40,7 +40,7 @@ const AudioEmotionDetection: React.FC = () => {
       s[p] = primaryPercent;
       setDominant(p);
       setScores(s);
-      setSource('mock');
+      // setSource('mock');
       setStatusMessage(`Analysis complete! Detected: ${p}`);
       setIsAnalyzing(false);
       setTimeout(() => setStatusMessage(''), 3000);
@@ -85,7 +85,7 @@ const AudioEmotionDetection: React.FC = () => {
             
             setDominant(primary as Emotion);
             setScores(normalizedScores);
-            setSource('model');
+            // setSource('model');
             setStatusMessage(`Analysis complete! Detected: ${primary}`);
           } else {
             // Only emotion label, create mock distribution
@@ -366,7 +366,7 @@ const AudioEmotionDetection: React.FC = () => {
         </div>
 
         {/* Features */}
-        <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {/* <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <FeatureCard
             icon="🎤"
             title="Voice Pattern Analysis"
@@ -382,7 +382,7 @@ const AudioEmotionDetection: React.FC = () => {
             title="Real-time Processing"
             description="120ms latency for live audio processing and instant feedback."
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );

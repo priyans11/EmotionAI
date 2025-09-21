@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Start Video Emotion Server",
+			"type": "shell",
+			"command": "cd Server && npm start",
+			"group": "build",
+			"isBackground": true
+		}
+	]
+}
